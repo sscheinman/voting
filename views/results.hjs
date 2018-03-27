@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Completed Elections </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+
+  }
+
+  /* Dropdown Button */
+  .dropbtn {
+    background-color: #FFFFFF;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #FFFFFF;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+    background-color: #FFFFFF;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd}
+
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+
+  </style>
+
+</head>
+
+
+<body onload=buildtable()>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/">Home</a>
+  <a href="/createBallot">Create a Ballot</a>
+  <a href="/viewBallot">View Ballots</a>
+  <a href="/results">View Results</a>
+</div>
+
+<div class="dropdown">
+  
+  <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
+    <i class="material-icons">&#xe7fd;</i>
+  </button>
+
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">Student View</a>
+    <a href="/logOut">Log Out</a>
+  </div>
+</div>
+
+<div id="main">
+
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
+  <!-- <h2>Results From Completed Elections</h2> -->
+
+  <div class="container">
+    <h1 style="text-align:center;">Results From Completed Elections</h1>
+    <p style="text-align:center;">This is a list of all past elections.</p>
+
+    <table class="table table-hover" id="electionTable">
+      <tr>
+        <th>Title</th>
+        <th>Semester</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="container" id="display">
+    
+    <h1 id="title"></h1>
+    <h2 id="winnerHeader"></h2>
+    <h3 id="totalVotes"></h3>
+
+    <table class="table table-hover" id="resultTable">
+
+    </table>
+
+    <div  id="offbutton"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+
+function dropDownHideShow() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+//temporary "database"
+var electionRecords = [{title: "Class President",semester: "Fall", year: 2018, candidates: ["candidate1", "candidate2"], votes: [700,200]},
+  {title: "Homecoming King",semester: "Fall", year: 2018, candidates: ["candidate1", "candidate2", "candidate3"], votes:[400,200,100]},
+  {title: "Homecoming Queen",semester: "Fall", year: 2018, candidates: ["candidate1", "candidate2"], votes: [700,300]},
+  {title: "Class President",semester: "Spring", year: 2017, candidates: ["candidate1", "candidate2","candidate3","candidate4"], votes: [700,300,200,100]}];
+
+//builds the table
+function buildtable(){
+
+  //get the table
+  table = document.getElementById("electionTable")
+
+  //for all the entries in the database
+  for(i = 0; i < electionRecords.length; i++) {
+    // Create an empty <tr> element and add it to the ith position of the table:
+    var row = table.insertRow(i+1);
+
+    // get currentElection object from list/array of students
+    var currentElection = electionRecords[i];
+
+    // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+
+    var temp = '<button type="button" class="btn btn-primary" onclick=loadElection(' + i + ')>View Details</button>';
+    cell1.innerHTML = currentElection.title;
+    cell2.innerHTML = currentElection.semester;
+    cell3.innerHTML = currentElection.year;
+    cell4.innerHTML = temp;
+  }
+}
+
+//loads the selected election
+function loadElection(i){
+
+  //use the passed index to select the correct election
+  election = electionRecords[i];
+
+  //get and input the title
+  title1 = document.getElementById("title");
+  title1.innerHTML = election.title +", " + election.semester + " " + election.year;
+
+  //get and input the winner display
+  winner = document.getElementById("winnerHeader");
+  winner.innerHTML = "Winner: " + election.candidates[0];
+
+  //setup the table
+  table1 = document.getElementById("resultTable");
+  table1.innerHTML = "<tr><th>Candidate</th><th>Votes</th><th>Percentage of Total Vote</th></tr>";
+
+  //calculate the total votes
+  var totalVotes = 0;
+  for(var j = 0; j < election.candidates.length; j++){
+
+    totalVotes += election.votes[j];
+
+  }
+
+  //display the total votes
+  voteHeader = document.getElementById("totalVotes");
+  voteHeader.innerHTML = "Total votes: " + totalVotes;
+
+  //for all the candidates
+  for(var j = 0; j < election.candidates.length; j++){
+
+    //inset a new row
+    var row1 = table1.insertRow(j);
+
+    // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
+    var cell1 = row1.insertCell(0);
+    var cell2 = row1.insertCell(1);
+    var cell3 = row1.insertCell(2);
+
+    //wrtie the name, the total votes, and percentage
+    cell1.innerHTML = election.candidates[j];
+    cell2.innerHTML = election.votes[j];
+    cell3.innerHTML = Math.round(election.votes[j] / totalVotes * 100)
+
+  }
+
+  //draw the button
+  button1 = document.getElementById("offbutton");
+  button1.innerHTML = "<button class=\"btn btn-primary\"onclick=hide()>Hide</button>";
+
+}
+
+//hides output from clicks
+function hide(){
+  //hidet the title
+  title1 = document.getElementById("title");
+  title1.innerHTML = "";
+
+  //hide the winner display
+  winner = document.getElementById("winnerHeader");
+  winner.innerHTML = "";
+
+  //hide the table
+  table1 = document.getElementById("resultTable");
+  table1.innerHTML = "<tr></tr>";
+
+  //hide the total votes
+  voteHeader = document.getElementById("totalVotes");
+  voteHeader.innerHTML = "";
+
+  //hide the button
+  button1 = document.getElementById("offbutton");
+  button1.innerHTML = "";
+
+}
+
+
+</script>
+</body>
+
+</html>
