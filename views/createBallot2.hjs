@@ -135,25 +135,22 @@ body {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;"> Student Government - Election </h2>
 
-  <p>
-      <label> Please enter the names of the candidates </label>
+     <table align="center" cellpadding="20">
 
-      <INPUT id="txtChar" type="text" name="txtChar" style="text-align:center;" >
-    </p>
-    <br>
+        <tr>
+          <td align="left">Please enter the names of the candidates</td>
+          <td align="center"><INPUT id="txtChar" type="text" name="txtChar" / > </td>
+        </tr>
+        <tr>
+          <td align="left"><b>Candidates</b></td>
+          <td align="left">names</td>
+        </tr>
 
-    <br>
-    <h2>
-      <b> Candidates: </b>
-    </h2>
-    <br>
-    <br>
-    <br>
+      </table>
 
-    <br>
-    <bu>
-      <a href="#" class="next"> View Preview &raquo; </a>
-    </bu>
+    <button style = "float: right" onClick="next()">
+      <a href="#"> View Preview &raquo; </a>
+    </button>
   
 </div>
 
