@@ -184,6 +184,21 @@
           <td align="justify"><input id="voteEnd" onkeypress="return isNumberKey(event)" type="datetime-local" name="txtChar" ></td>
         </tr>
 
+        <tr>
+          <td align="left">What grade level is eligible to vote in this election</td>
+          <td align="justify">
+            
+            <SELECT id="position" NAME="position">
+              <OPTION SELECTED> All
+              <OPTION> Freshman
+              <OPTION> Sophomore
+              <OPTION> Junior
+              <OPTION> Senior
+            </SELECT>
+
+          </td>
+        </tr>
+
       </table>
 
     </form>
