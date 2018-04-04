@@ -112,7 +112,7 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/">Home</a>
+  <a href="/adminView">Home</a>
   <a href="/createBallot">Create a Ballot</a>
   <a href="/viewBallot">View Ballots</a>
   <a href="/results">View Results</a>
@@ -125,7 +125,7 @@ body {
   </button>
 
   <div id="myDropdown" class="dropdown-content">
-    <a href="#">Student View</a>
+    <a href="/studentView">Student View</a>
     <a href="/logOut">Log Out</a>
   </div>
   

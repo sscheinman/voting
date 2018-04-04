@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
 	res.render('index', {title: "Admin Portal"});
 });
@@ -34,6 +33,12 @@ router.get('/createBallot2', createBallot2Function);
 
 function createBallot2Function (req, res, next){
 	res.render('createBallot2');
+}
+
+router.get('/studentView', studentViewFunction);
+
+function studentViewFunction (req, res, next){
+	res.render('studentView');
 }
 
 module.exports = router;

@@ -127,7 +127,7 @@ body {
     </button>
 
     <div id="myDropdown" class="dropdown-content">
-      <a href="#">Student View</a>
+      <a href="/studentView">Student View</a>
       <a href="/logOut">Log Out</a>
     </div>
   </div>
