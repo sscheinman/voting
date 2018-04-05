@@ -164,6 +164,9 @@
               <OPTION> Treasurer
               <OPTION> Secretary
               <OPTION> Speaker of the House
+              <OPTION> Representative
+              <OPTION> Homecoming King
+              <OPTION> Homecoming Queen
             </SELECT>
 
           </td>
