@@ -160,9 +160,7 @@
     <h2 id="winnerHeader"></h2>
     <h3 id="totalVotes"></h3>
 
-    <table class="table table-hover" id="resultTable">
-
-    </table>
+    <table class="table table-hover" id="resultTable"></table>
 
     <div  id="offbutton"></div>
 
@@ -254,10 +252,6 @@ function loadElection(i){
   winner = document.getElementById("winnerHeader");
   winner.innerHTML = "Winner: " + election.candidates[0];
 
-  //setup the table
-  table1 = document.getElementById("resultTable");
-  table1.innerHTML = "<tr><th>Candidate</th><th>Votes</th><th>Percentage of Total Vote</th></tr>";
-
   //calculate the total votes
   var totalVotes = 0;
   for(var j = 0; j < election.candidates.length; j++){
@@ -270,11 +264,17 @@ function loadElection(i){
   voteHeader = document.getElementById("totalVotes");
   voteHeader.innerHTML = "Total votes: " + totalVotes;
 
+  
+  //setup the table
+  table1 = document.getElementById("resultTable");
+  table1.innerHTML = "<tr><th>Candidate</th><th>Votes</th><th>Percentage of Total Vote</th></tr>";
+
+
   //for all the candidates
   for(var j = 0; j < election.candidates.length; j++){
 
     //inset a new row
-    var row1 = table1.insertRow(j);
+    var row1 = table1.insertRow(j+1);
 
     // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
     var cell1 = row1.insertCell(0);

@@ -143,10 +143,10 @@ body {
 
     <table class="table table-hover" id="electionTable">
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Office Title</th>
             <th scope="col">Total Votes</th>
             <th scope="col">Closing in</th>
+            <th scope="col"></th>
         </tr>
      
     </table>
@@ -154,9 +154,8 @@ body {
 
   <div class="container" id="display">
     
-    <h1 id="voter"></h1>
+    <h1 id="title"></h1>
     <h2 id="totalVotes"></h2>
-    <h3 id="rates"></h3>
 
     <table class="table table-hover" id="resultTable">
 
@@ -170,11 +169,11 @@ body {
 
   <script>
 
-    var currentBallots = [
-  {title: "Student Government President",vote_amount: "2500", closed_in: 72, voter: ["Wendy", "Wendy#2"], votes: [700,200], rates:"60%"},
-  {title: "Student Government Vice President",vote_amount: "2000", closed_in: 75, voter: ["Wendy", "Wendy#2", "Wendy#3"], votes:[400,200,100], rates:"50%"},
-  {title: "Student Government Secretary ",vote_amount: "1500", closed_in: 65, voter: ["Wendy", "Wendy#2"], votes: [700,300], rates:"30%"},
-  {title: "Student Government officer",vote_amount: "1000", closed_in: 63, voter: ["Wendy", "Wendy#2","Wendy#3","Wendy#4"], votes: [700,300,200,100],rates:"70%"}];
+    var midElectionRecords = [
+  {title: "Student Government President",vote_amount: "2500", closed_in: 72, candidates: ["Wendy", "Wendy#2"], votes: [700,200], rates:"60%"},
+  {title: "Student Government Vice President",vote_amount: "2000", closed_in: 75, candidates: ["Wendy", "Wendy#2", "Wendy#3"], votes:[400,200,100], rates:"50%"},
+  {title: "Student Government Secretary ",vote_amount: "1500", closed_in: 65, candidates: ["Wendy", "Wendy#2"], votes: [700,300], rates:"30%"},
+  {title: "Student Government officer",vote_amount: "1000", closed_in: 63, candidates: ["Wendy", "Wendy#2","Wendy#3","Wendy#4"], votes: [700,300,200,100],rates:"70%"}];
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -216,27 +215,25 @@ function buildtable(){
   table = document.getElementById("electionTable");
 
   //for all the entries in the database
-  for(i = 0; i < currentBallots.length; i++) {
+  for(i = 0; i < midElectionRecords.length; i++) {
     // Create an empty <tr> element and add it to the ith position of the table:
     var row = table.insertRow(i+1);
 
     // get currentElection object from list/array of students
-    var currentElection = currentBallots[i];
+    var currentElection = midElectionRecords[i];
 
     // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
 
     var temp = '<button type="button" class="btn btn-primary" onclick=loadElection(' + i + ')>View Details</button>';
 
-    cell1.innerHTML = i;
-    cell2.innerHTML = currentElection.title;
-    cell3.innerHTML = currentElection.vote_amount;
-    cell4.innerHTML = currentElection.closed_in;
-    cell5.innerHTML = temp;
+    cell1.innerHTML = currentElection.title;
+    cell2.innerHTML = currentElection.vote_amount;
+    cell3.innerHTML = currentElection.closed_in;
+    cell4.innerHTML = temp;
   }
 }
 
@@ -245,34 +242,34 @@ function buildtable(){
 function loadElection(i){
 
   //use the passed index to select the correct election
-  election = currentBallots[i];
+  election = midElectionRecords[i];
 
   //get and input the title
-  voter = document.getElementById("voter");
-  voter.innerHTML = "Voter name: " + election.title;
+  title = document.getElementById("title");
+  title.innerHTML = election.title;
 
   //display Rates
-  rates = document.getElementById("rates");
-  rates.innerHTML = "Total rates: " +  election.rates;
-
-  //setup the table
-  table1 = document.getElementById("resultTable");
-  table1.innerHTML = "<tr><th>Voter</th><th>Vote Amount</th><th>Vote Rate</th></tr>";
+  //rates = document.getElementById("rates");
+  //rates.innerHTML = "Total rates: " +  election.rates;
 
   //calculate the total votes
   var totalVotes = 0;
-  for(var j = 0; j < election.voter.length; j++){
+  for(var j = 0; j < election.candidates.length; j++){
     totalVotes += election.votes[j];
   }
 
   //display the total votes
   voteHeader = document.getElementById("totalVotes");
-  voteHeader.innerHTML = "Vote Amount: " + totalVotes;
+  voteHeader.innerHTML = "Current Total Votes " + totalVotes;
 
-  for(var j = 0; j < election.voter.length; j++){
+  //setup the table
+  table1 = document.getElementById("resultTable");
+  table1.innerHTML = "<tr><th>Candidate</th><th>Vote Amount</th><th>Vote Rate</th></tr>";
+
+  for(var j = 0; j < election.candidates.length; j++){
 
     //inset a new row
-    var row1 = table1.insertRow(j);
+    var row1 = table1.insertRow(j+1);
 
     // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
     var cell1 = row1.insertCell(0);
@@ -280,7 +277,7 @@ function loadElection(i){
     var cell3 = row1.insertCell(2);
 
     //wrtie the name, the total votes, and percentage
-    cell1.innerHTML = election.voter[j];
+    cell1.innerHTML = election.candidates[j];
     cell2.innerHTML = election.votes[j];
     cell3.innerHTML = election.rates;
 
@@ -296,12 +293,12 @@ function loadElection(i){
 //hides output from clicks
 function hide(){
   //hidet the title
-  title1 = document.getElementById("voter");
+  title1 = document.getElementById("candidates");
   title1.innerHTML = "";
 
   //hide the winner display
-  winner = document.getElementById("rates");
-  winner.innerHTML = "";
+  //winner = document.getElementById("rates");
+  //winner.innerHTML = "";
 
   //hide the table
   table1 = document.getElementById("resultTable");
