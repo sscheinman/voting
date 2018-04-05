@@ -119,6 +119,10 @@
 
   .show {display:block;}
 
+  .div1{
+    width: 200px;
+  }
+
   </style>
 
 </head>
@@ -158,7 +162,7 @@
           <td align="left">What is the role that this ballot is voting for?</td>
           <td align="justify">
             
-            <SELECT id="position" NAME="position">
+            <SELECT id="position" NAME="position" class="div1">
               <OPTION SELECTED> President
               <OPTION> Vice President
               <OPTION> Treasurer
@@ -174,24 +178,24 @@
 
         <tr>
           <td align="left">How many candidates should students be able to vote for?</td>
-          <td align="justify"><input id="numCandidates" onkeypress="return isNumberKey(event)" type="text" name="txtChar" style="text-align:center;" /></td>
+          <td align="justify"><input id="numCandidates" onkeypress="return isNumberKey(event)" type="text" name="txtChar" class="div1" style="text-align:center;" /></td>
         </tr>
 
         <tr>
           <td align="left">When would you like students to begin voting?</td>
-          <td align="justify"><input id="voteStart" onkeypress="return isNumberKey(event)" type="datetime-local" name="txtChar" /></td>
+          <td align="justify"><input id="voteStart" onkeypress="return isNumberKey(event)" type="datetime-local" class="div1" name="txtChar" /></td>
         </tr>
 
         <tr>
           <td align="left">When would you like students to end voting?</td>
-          <td align="justify"><input id="voteEnd" onkeypress="return isNumberKey(event)" type="datetime-local" name="txtChar" ></td>
+          <td align="justify"><input id="voteEnd" onkeypress="return isNumberKey(event)" type="datetime-local" class="div1" name="txtChar" ></td>
         </tr>
 
         <tr>
           <td align="left">What grade level is eligible to vote in this election</td>
           <td align="justify">
             
-            <SELECT id="position" NAME="position">
+            <SELECT id="voterClass" NAME="position" class="div1">
               <OPTION SELECTED> All
               <OPTION> Freshman
               <OPTION> Sophomore

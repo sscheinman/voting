@@ -3,9 +3,9 @@
 
 var users_data = 
 [
-  	{name: 'Frodo', lastname: 'Baggins'}, 
-  	{name: 'Sam', lastname: 'Gamgee'},
-  	{name: 'Peregrin', lastname: 'Took'} 
+  	/*{name: 'Frodo Baggins'}, 
+  	{name: 'Sam Gamgee'},
+  	{name: 'Peregrin Took'} */
 ];
 
 module.exports = users_data;

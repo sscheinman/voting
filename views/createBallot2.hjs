@@ -105,6 +105,10 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.div1{
+  width: 200px;
+}
+
 </style>
 </head>
 
@@ -139,11 +143,29 @@ body {
 
         <tr>
           <td align="left">Please enter the names of the candidates</td>
-          <td align="center"><INPUT id="txtChar" type="text" name="txtChar" / > </td>
+          <td align="center">
+            <!--<INPUT id="candidateNameInput" type="text" name="txtChar" class="div1"/ > -->
+            <form action="/users/record" method="post">
+              <input type="text" name="name" value="">
+              
+              <input type="submit" value="Submit">
+            </form> 
+          </td>
         </tr>
         <tr>
           <td align="left"><b>Candidates</b></td>
-          <td align="left">names</td>
+          <td align="left">
+
+            <div>
+              <ul>
+                {{#users}}   <!-- Iterate over the array in users variable -->
+                <li>{{name}}</li>  <!-- fields in the array entry -->
+                {{/users}} <!-- end of loop -->
+              </ul>
+            </div>
+
+
+          </td>
         </tr>
 
       </table>

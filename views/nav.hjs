@@ -112,7 +112,7 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/adminView">Home</a>
+  <a href="/">Home</a>
   <a href="/createBallot">Create a Ballot</a>
   <a href="/viewBallot">View Ballots</a>
   <a href="/results">View Results</a>
@@ -120,20 +120,20 @@ body {
 
 <div class="dropdown">
   
-  <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
+  <span><button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
     <i class="material-icons">&#xe7fd;</i>
-  </button>
+  </button> </span>
 
   <div id="myDropdown" class="dropdown-content">
     <a href="/studentView">Student View</a>
     <a href="/logOut">Log Out</a>
   </div>
-  
 </div>
 
 <div id="main">
 
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
+  <h2 style="text-align:center;">Welcome to the Admin Portal</h2>
   
 </div>
 
