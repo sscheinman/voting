@@ -139,10 +139,10 @@ body {
 
   <form>
 
-    <table>
+    <table align="center" cellpadding="20">
 
       <tr>
-          <td align="left">What grade level is eligible to vote in this election</td>
+          <td align="left">What grade are you currently in?</td>
           <td align="justify">
             
             <SELECT id="voterClass" NAME="position" class="div1">
