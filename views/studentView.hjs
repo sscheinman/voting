@@ -136,6 +136,28 @@ body {
 
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;">Welcome to the Student Voting Portal</h2>
+
+  <form>
+
+    <table>
+
+      <tr>
+          <td align="left">What grade level is eligible to vote in this election</td>
+          <td align="justify">
+            
+            <SELECT id="voterClass" NAME="position" class="div1">
+              <OPTION SELECTED> Freshman
+              <OPTION> Sophomore
+              <OPTION> Junior
+              <OPTION> Senior
+            </SELECT>
+
+          </td>
+        </tr>
+
+      </table>
+
+    </form>
   
 </div>
 
