@@ -7,12 +7,11 @@ var usersModel = require('../models/usersModel');
 // All of these routes are relative to /users      //
 //*************************************************//
 
-// GET to Add Character page
+// GET to Add Candidates page
 router.get('/addcandidate', indexCreateBallot2Function);
 
 // POST data from 
 router.post('/record', record_data);
-
 
 //
 // Functions responding to HTTP requests
