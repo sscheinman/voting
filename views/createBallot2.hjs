@@ -109,6 +109,46 @@ body {
   width: 200px;
 }
 
+/*
+* {
+  box-sizing: border-box;
+}
+*/
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+}
+
+ul li:hover {
+  background-color: #eee;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+}
+
+.close:hover {background: #bbb;}
+
+
 </style>
 </head>
 
@@ -159,7 +199,7 @@ body {
             <div>
               <ul>
                 {{#users}}   <!-- Iterate over the array in users variable -->
-                <li>{{name}}</li>  <!-- fields in the array entry -->
+                <li>{{name}}<span class="close">&times;</span></li>  <!-- fields in the array entry -->
                 {{/users}} <!-- end of loop -->
               </ul>
             </div>
@@ -209,6 +249,16 @@ window.onclick = function(event) {
     }
   }
 }
+
+var closebtns = document.getElementsByClassName("close");
+var i;
+
+for (i = 0; i < closebtns.length; i++) {
+  closebtns[i].addEventListener("click", function() {
+    this.parentElement.style.display = 'none';
+  });
+}
+
 
 </script>
      

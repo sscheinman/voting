@@ -41,4 +41,10 @@ function studentViewFunction (req, res, next){
 	res.render('studentView');
 }
 
+router.get('/candidateView', candidateViewFunction);
+
+function candidateViewFunction (req, res, next){
+	res.render('candidateView');
+}
+
 module.exports = router;
