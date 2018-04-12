@@ -19,21 +19,36 @@ router.post('/record', record_data);
 router.get('/createBallot2', indexCreateBallot2Function);
 
 function indexCreateBallot2Function(req, res, next) {
+
+	usersModel = dbtools.readUserData( function(err,rows) {
+		if (err) {
+			throw err;
+		}
+		console.log(rows);
+		
+		usersModel = rows;
+
 	// parameters for res.render(par1, par2)
 	// par1 : a view in the views folder
 	// par2 : data to be used when rendering the view
-  res.render(
-  	'createBallot2', 
-  	{ title: 'Admin View', 
-  	  users: usersModel
-  	}
-  	);
+
+		res.render( 
+			'createBallot2', 
+			{ title: 'Admin View', 
+				users: usersModel
+			}
+  		);
+  	});
 }
 
 function record_data(req, res, next) {
 	console.log(req.body); // show in the console what the user entered
-	usersModel.push(req.body); // Add the user data to the users_data dataset
-	res.redirect('createBallot2');	// reload the page
+	//usersModel.push(req.body); // Add the user data to the users_data dataset
+	// Save to database
+	dbtools.saveUser(req.body, () => {
+		res.redirect('/createBallot2');	// reload the page
+	});
+
 }
 
 // Export the router, required in app.js
