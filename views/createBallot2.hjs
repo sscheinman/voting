@@ -210,7 +210,7 @@ ul li:hover {
       </table>
 
     <button style = "float: right" onClick="next()">
-      <a href="#"> View Preview &raquo; </a>
+      <a href="/electionPreview"> View Preview &raquo; </a>
     </button>
   
 </div>
