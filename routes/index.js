@@ -29,6 +29,12 @@ function logOutFunction (req, res, next){
 	res.render('logOut');
 }
 
+router.get('/generalVoting', generalVotingFunction);
+
+function generalVotingFunction (req, res, next){
+	res.render('generalVoting');
+}
+
 router.get('/createBallot2', createBallot2Function);
 
 function createBallot2Function (req, res, next){
