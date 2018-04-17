@@ -163,7 +163,7 @@ ul li:hover {
 </div>
 
 <div class="dropdown">
-  
+
   <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
     <i class="material-icons">&#xe7fd;</i>
   </button>
@@ -185,11 +185,11 @@ ul li:hover {
           <td align="left">Please enter the names of the candidates</td>
           <td align="center">
             <!--<INPUT id="candidateNameInput" type="text" name="txtChar" class="div1"/ > -->
-            <form action="/users/record" method="post">
+            <form action="/users/search" method="post">
               <input type="text" name="name" value="">
-              
+
               <input type="submit" value="Submit">
-            </form> 
+            </form>
           </td>
         </tr>
         <tr>
@@ -198,9 +198,9 @@ ul li:hover {
 
             <div>
               <ul>
-                {{#users}}   <!-- Iterate over the array in users variable -->
-                <li>{{name}}<span class="close">&times;</span></li>  <!-- fields in the array entry -->
-                {{/users}} <!-- end of loop -->
+                {{#candidates}}   <!-- Iterate over the array in users variable -->
+                <li>{{lastname}}<span class="close">&times;</span></li>  <!-- fields in the array entry -->
+                {{/candidates}} <!-- end of loop -->
               </ul>
             </div>
 
@@ -212,7 +212,7 @@ ul li:hover {
     <button style = "float: right" onClick="next()">
       <a href="#"> View Preview &raquo; </a>
     </button>
-  
+
 </div>
 
 <script>
@@ -260,7 +260,7 @@ for (i = 0; i < closebtns.length; i++) {
 
 
 </script>
-     
+
 </body>
 
 </html>
