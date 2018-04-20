@@ -53,4 +53,10 @@ function electionPreviewFunction (req, res, next){
 	res.render('electionPreview');
 }
 
+router.get('/generalVoting', generalVotingFunction);
+
+function generalVotingFunction (req, res, next){
+	res.render('generalVoting');
+}
+
 module.exports = router;

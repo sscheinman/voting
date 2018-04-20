@@ -114,6 +114,26 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/studentView">Home</a>
   <a href="/candidateView">Candidate Bio</a>
+  <button class="dropdown-btn">Student Government 
+    <i class="material-icons">arrow_drop_down</i>
+  </button>
+  <div class="dropdown-container" style="display: none">
+      <a href="#">President</a>
+      <a href="#">Vice President</a>
+      <a href="#">Secretary</a>
+      <a href="#">Speaker of the House</a>
+      <a href="#">Treasure</a>
+      <a href="#">Representative</a>
+  </div>
+   <!-- <a href="#">Homecoming</a> -->
+   <button class="dropdown-btn">Homecoming
+    <i class="material-icons">arrow_drop_down</i>
+  </button>
+  <div class="dropdown-container" style="display: none">
+      <a href="#">King</a>
+      <a href="#">Queen</a>
+  </div>
+</div>
   <!-- 
   <a href="/createBallot">Create a Ballot</a>
   <a href="/viewBallot">View Ballots</a>
