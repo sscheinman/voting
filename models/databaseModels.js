@@ -64,6 +64,24 @@ dbtools.searchByName = function(data, callback) {
 
 }
 
+dbtools.castVote = function(callback){
+  console.log('Vote Id Number: ' + data.VoteNum);
+  db.run('INSERT INTO Votes(StudentID, BallotID) VALUES(?, ?)',
+    [data.StudentID, data.BallotID], function(err) {
+      if (err) {
+          return console.log(err.message);
+      }
+      // get the last insert id
+      console.log(`A row has been inserted with rowid ${this.lastID}`);
+    });
+
+  if (callback) {
+    callback();
+  }
+};
+
+
+
 dbtools.readUserData = function (callback) {
   db.all('select * FROM Ballot', [], callback);
 }
