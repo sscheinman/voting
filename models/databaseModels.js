@@ -47,6 +47,8 @@ db.close((err) => {
 
 dbtools.searchByName = function(data, callback) {
   console.log(data.name);
+
+
   db.each('SELECT LName lastname, FName firstname FROM STUDENT WHERE LNAME = ?',
     [data.name],
     (err, row) => {
@@ -61,6 +63,8 @@ dbtools.searchByName = function(data, callback) {
       }
 
     });
+
+
 
 }
 
@@ -80,10 +84,27 @@ dbtools.castVote = function(callback){
   }
 };
 
+/*
+dbtools.gettotalVotes = function(callback){
+  db.all('SELECT sum(BallotID) FROM Ballot');
+  if (err) {
+      return console.log(err.message);
+  }
+  // get the last insert id
+  console.log(`A row has been inserted with rowid ${this.lastID}`);
+});
+
+if (callback) {
+callback();
+}
+
+}
+*/
 
 
 dbtools.readUserData = function (callback) {
   db.all('select * FROM Ballot', [], callback);
 }
+
 
 module.exports = dbtools;
