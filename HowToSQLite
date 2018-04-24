@@ -1,0 +1,4 @@
+This file contains basic how-to instructions for using SQLite
+
+- Requires package sqlite3
+ (needs review...)
