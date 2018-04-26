@@ -4,6 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 body {
@@ -105,6 +106,43 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+
 </style>
 </head>
 
@@ -114,7 +152,27 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/studentView">Home</a>
   <a href="/candidateView">Candidate Bio</a>
-  <!-- 
+  <button class="dropdown-btn">Student Government
+    <i class="material-icons">arrow_drop_down</i>
+  </button>
+  <div class="dropdown-container" style="display: none">
+      <a href="#">President</a>
+      <a href="#">Vice President</a>
+      <a href="#">Secretary</a>
+      <a href="#">Speaker of the House</a>
+      <a href="#">Treasure</a>
+      <a href="#">Representative</a>
+  </div>
+   <!-- <a href="#">Homecoming</a> -->
+   <button class="dropdown-btn">Homecoming
+    <i class="material-icons">arrow_drop_down</i>
+  </button>
+  <div class="dropdown-container" style="display: none">
+      <a href="#">King</a>
+      <a href="#">Queen</a>
+  </div>
+</div>
+  <!--
   <a href="/createBallot">Create a Ballot</a>
   <a href="/viewBallot">View Ballots</a>
   <a href="/results">View Results</a>
@@ -122,7 +180,7 @@ body {
 </div>
 
 <div class="dropdown">
-  
+
   <span><button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
     <i class="material-icons">&#xe7fd;</i>
   </button> </span>
@@ -137,8 +195,36 @@ body {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;">Update Your Candidate Bio</h2>
 
-  
-  
+  <div class="card">
+    <img id="image" src="blank.png" alt="UserPhoto" style="width:128px;height:128px;">
+    <h1>John Doe</h1>
+    <p class="title">Student Government Presidential Candidate</p>
+    <br></br>
+    <p><b>Candidate Bio</b></p>
+    <p> &#x270e;
+      <span id="edit" contenteditable="true">
+        Enter Your Bio Here
+      </span>
+    </p>
+    <!--
+    <div style="margin: 24px 0;">
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+    </div>
+    -->
+    <p><button type="button" onclick="saveEdits()">Save Bio</button></p>
+    <div style="height:0px;overflow:hidden">
+      <input type="file" id="fileInput" name="fileInput" accept= "image/jpeg, image/png" />
+    </div>
+    <p><button type="button" onclick="chooseFile();">Upload Photo</button></p>
+
+</div>
+
+
+
+
 </div>
 
 <script>
@@ -160,6 +246,25 @@ function dropDownHideShow() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
+
+function saveEdits() {
+
+  //get the editable element
+  var editElem = document.getElementById("edit");
+
+  //get the edited element content
+  var userVersion = editElem.innerHTML;
+
+  //save the content to database
+
+}
+
+/* When user clicks on the button allow them to choose a file */
+function chooseFile() {
+   document.getElementById("fileInput").click();
+   document.getElementById("image").src;
+}
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
@@ -176,7 +281,7 @@ window.onclick = function(event) {
 }
 
 </script>
-     
+
 </body>
 
 </html>
