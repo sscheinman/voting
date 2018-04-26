@@ -147,6 +147,7 @@
     <table class="table table-hover" id="electionTable">
 
     </table>
+    <div id="backButton"></div>
   </div>
 
   <div class="container" id="display">
@@ -207,6 +208,10 @@ var electionRecords = [{title: "Class President",semester: "Fall", year: 2018, c
 
 //builds the table
 function buildtable(){
+
+  //hide back button
+  var backButton = document.getElementById("backButton");
+  backButton.innerHTML = '';
 
   hide();
 
@@ -306,6 +311,12 @@ function getElections(i){
 
 
   }
+
+  //put in a back button
+  var backButton = document.getElementById("backButton");
+  backButton.innerHTML = '<button type="button" class="btn btn-primary" onclick=buildtable()>Go Back</button>'
+
+
 
 
 }
