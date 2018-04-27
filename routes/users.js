@@ -50,9 +50,9 @@ function record_data(req, res, next) {
      // createBallot2
      dbtools.getAllUsers( function (err, data) {
        userList = data;
-     });
-     res.render('createBallot2');	// reload the page
+       res.render('createBallot2', {userList: JSON.stringify(userList)});	// reload the page
       });
+  });
 }
 
 function saveVote(req, res, next) {

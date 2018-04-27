@@ -179,6 +179,10 @@ ul li:hover {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;"> Student Government - Election </h2>
 
+    <!--<span id= "userData" style= "visibility: hidden">
+       {{userList}};
+    </span>-->
+
      <table align="center" cellpadding="20">
 
         <tr>
@@ -261,12 +265,17 @@ for (i = 0; i < closebtns.length; i++) {
 var xhr;
 
 window.onload = function () {
+
+  //document.getElementById("userData").style.visibility = "hidden";
+  var users = JSON.parse({{userList}});
     // get userlist from server
-    xhr = new XMLHttpRequest();
+  /*  xhr = new XMLHttpRequest();
     xhr.open('GET', "http://localhost:3000/users/getAllUserData", true);
     xhr.send();
 
     xhr.onreadystatechange = processRequest;
+    */
+
 
 }
 
