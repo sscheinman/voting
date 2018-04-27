@@ -258,7 +258,23 @@ for (i = 0; i < closebtns.length; i++) {
   });
 }
 
+var xhr;
 
+window.onload = function () {
+    // get userlist from server
+    xhr = new XMLHttpRequest();
+    xhr.open('GET', "http://localhost:3000/users/getAllUserData", true);
+    xhr.send();
+
+    xhr.onreadystatechange = processRequest;
+
+}
+
+function processRequest(e) {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    response = JSON.parse(xhr.responseText);
+  }
+}
 </script>
 
 </body>

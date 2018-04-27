@@ -1,5 +1,11 @@
 var express = require('express');
+// Load the data model
+var dbtools = require('../models/databaseModels');
+
 var router = express.Router();
+
+// Array of Ballots
+var ballotList = [];
 
 router.get('/', function(req, res, next) {
 	res.render('index', {title: "Admin Portal"});
@@ -29,9 +35,29 @@ function logOutFunction (req, res, next){
 	res.render('logOut');
 }
 
-router.get('/generalVoting', generalVotingFunction);
+router.post('/generalVoting', generalVotingFunction);
 
 function generalVotingFunction (req, res, next){
+	console.log(req.body);
+	dbtools.getBallots(req.body, function (err, rows) {
+    if (err) {
+      throw err;
+    }
+    //console.log(rows);
+
+    if (rows) {
+      //console.log(rows);
+      ballotList.push(rows);
+			// Go get the candidates for entries in the ballotList
+			dbtools.getCandidates(rows[0].BallotID, function (err, candidateList) {
+				if (err) {
+					throw err;
+				}
+      	res.render('generalVoting', {candidates: candidateList});
+		});
+    }
+  });
+
 	res.render('generalVoting');
 }
 

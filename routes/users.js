@@ -5,6 +5,8 @@ var dbtools = require('../models/databaseModels');
 
 var candidatesList = [];
 
+var userList = [];
+
 //*************************************************//
 // All of these routes are relative to /users      //
 //*************************************************//
@@ -17,6 +19,9 @@ router.post('/record', record_data);
 
 router.post('/search', searchByUser);
 
+router.get('/getAllUserData', function (req, res) {
+  res.json(userList);
+})
 //
 // Functions responding to HTTP requests
 //
@@ -36,11 +41,42 @@ function indexCreateBallot2Function(req, res, next) {
   	);
 }
 
+
 function record_data(req, res, next) {
 	console.log(req.body); // show in the console what the user entered
 	//usersModel.push(req.body); // Add the user data to the users_data dataset
   dbtools.saveBallot(req.body, () => {
-	   res.redirect('createBallot2');	// reload the page
+     // Get all the users and the send the list of users to
+     // createBallot2
+     dbtools.getAllUsers( function (err, data) {
+       userList = data;
+     });
+     res.render('createBallot2');	// reload the page
+      });
+}
+
+function saveVote(req, res, next) {
+	console.log(req.body); // show in the console what the user entered
+	//usersModel.push(req.body); // Add the user data to the users_data dataset
+  dbtools.castVote(req.body, () => {
+	   res.redirect('studentView');	// reload the page
+  });
+
+}
+
+function getAllUser(req, res, next) {
+  //console.log(req.body);
+  data = dbtools.getAllUsers( (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    console.log(rows);
+
+    if (rows) {
+      console.log(rows);
+      candidatesList.push(rows);
+      res.redirect('createBallot2');
+    }
   });
 
 }

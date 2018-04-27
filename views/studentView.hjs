@@ -114,7 +114,7 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/studentView">Home</a>
   <a href="/candidateView">Candidate Bio</a>
-  <!-- 
+  <!--
   <a href="/createBallot">Create a Ballot</a>
   <a href="/viewBallot">View Ballots</a>
   <a href="/results">View Results</a>
@@ -122,7 +122,7 @@ body {
 </div>
 
 <div class="dropdown">
-  
+
   <span><button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
     <i class="material-icons">&#xe7fd;</i>
   </button> </span>
@@ -138,14 +138,14 @@ body {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;">Welcome to the Student Voting Portal</h2>
 
-  <form>
+  <form action="/generalVoting" method="POST">
 
     <table align="center" cellpadding="20">
 
       <tr>
           <td align="left">What grade are you currently in?</td>
           <td align="justify">
-            
+
             <SELECT id="voterClass" NAME="position" class="div1">
               <OPTION SELECTED> Freshman
               <OPTION> Sophomore
@@ -158,8 +158,9 @@ body {
 
       </table>
 
+      <input type="submit" value="Next">
     </form>
-  
+
 </div>
 
 <script>
@@ -197,7 +198,7 @@ window.onclick = function(event) {
 }
 
 </script>
-     
+
 </body>
 
 </html>

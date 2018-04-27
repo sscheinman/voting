@@ -45,27 +45,54 @@ db.close((err) => {
 });
 */
 
-dbtools.searchByName = function(data, callback) {
-  console.log(data.name);
+dbtools.getAllUsers = function(callback) {
 
+  db.all('SELECT LName lname, FName fname FROM STUDENT',
+    (err, rows) => {
+      if (err) {
+        throw err;
+      }
+      rows.forEach( function (row) {
+        console.log(row.lname);
+      });
 
-  db.each('SELECT LName lastname, FName firstname FROM STUDENT WHERE LNAME = ?',
-    [data.name],
+      if (callback) {
+        callback(err, rows);
+      }
+
+    });
+}
+
+dbtools.getBallots = function(data, callback) {
+  console.log('Voting Grade: ' + data.position);
+  db.all('SELECT * FROM Ballot WHERE VotingGrade = ? or VotingGrade = ?',
+    [data.position, 'All'],
     (err, row) => {
       if (err) {
         throw err;
       }
       console.log(row);
-      //console.log(row.firstname + ", " + row.lastname);
 
       if (callback) {
         callback(err, row);
       }
+});
+}
 
-    });
+dbtools.getCandidates = function(ballotID, callback) {
+  console.log('Voting Grade: ' + BallotID);
+  db.all('SELECT * FROM Candidates WHERE VotingGrade = ? or VotingGrade = ?',
+    [data.position, 'All'],
+    (err, row) => {
+      if (err) {
+        throw err;
+      }
+      console.log(row);
 
-
-
+      if (callback) {
+        callback(err, row);
+      }
+});
 }
 
 dbtools.castVote = function(callback){
@@ -76,7 +103,7 @@ dbtools.castVote = function(callback){
           return console.log(err.message);
       }
       // get the last insert id
-      console.log(`A row has been inserted with rowid ${this.lastID}`);
+      console.log(`A vote row has been inserted with rowid ${this.lastID}`);
     });
 
   if (callback) {
@@ -100,6 +127,7 @@ callback();
 
 }
 */
+
 
 
 dbtools.readUserData = function (callback) {
