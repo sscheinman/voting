@@ -2,7 +2,6 @@
 
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -212,7 +211,7 @@ body {
 <body onload=buildtable()>
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<a href="/">Home</a>
+<a href="/studentView">Home</a>
 <button class="dropdown-btn">Student Government 
     <i class="material-icons">arrow_drop_down</i>
   </button>
@@ -237,8 +236,6 @@ body {
 
 
  
-
-
 
 
   <div id="iconDropDown" class="dropdown">
