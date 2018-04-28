@@ -46,13 +46,15 @@ function generalVotingFunction (req, res, next){
     //console.log(rows);
 
     if (rows) {
-      //console.log(rows);
+      console.log(rows);
       ballotList.push(rows);
 			// Go get the candidates for entries in the ballotList
-			dbtools.getCandidates(rows[0].BallotID, function (err, candidateList) {
+			dbtools.getCandidates(rows[7].BallotID, function (err, candidateList) {
 				if (err) {
 					throw err;
 				}
+				console.log(candidateList);
+
       	res.render('generalVoting', {candidates: candidateList});
 		});
     }
