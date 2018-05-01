@@ -2,7 +2,7 @@
 
 <html>
   <head>
-  
+
   <script>
 
      function isNumberKey(evt)
@@ -15,7 +15,7 @@
      }
 
   </script>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -154,8 +154,10 @@
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
     <h2 style="text-align:center;"> Preview - Presidential Election </h2>
 
+      <p style="text-align:center;">Please Select # of Candidates:</p>
+
     <form>
-      
+
       <table align="center" cellpadding="20">
 
         <tr>
@@ -164,7 +166,6 @@
         </tr>
 
         <tr>
-          <td align="center">Please Select # of Candidates:</td>
           <td> NAMES OF CANDIDATES GO HERE </td>
         </tr>
 
@@ -173,7 +174,7 @@
     </form>
 
     <button style = "float: right" onClick="next()">
-      <a href="/viewBallot">Submit &raquo;</a>  
+      <a href="/viewBallot">Submit &raquo;</a>
     </button>
 
   </div>

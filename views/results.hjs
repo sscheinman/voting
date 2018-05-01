@@ -124,7 +124,7 @@
 </div>
 
 <div class="dropdown">
-  
+
   <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
     <i class="material-icons">&#xe7fd;</i>
   </button>
@@ -141,21 +141,17 @@
   <!-- <h2>Results From Completed Elections</h2> -->
 
   <div class="container">
-    <h1 style="text-align:center;">Results From Completed Elections</h1>
-    <p style="text-align:center;">This is a list of all past elections.</p>
+    <h1 style="text-align:center;" id="mainTitle">Results From Completed Elections</h1>
+    <p style="text-align:center;" id="mainSubtitle">This is a list of all past elections.</p>
 
     <table class="table table-hover" id="electionTable">
-      <tr>
-        <th>Title</th>
-        <th>Semester</th>
-        <th>Year</th>
-        <th></th>
-      </tr>
+
     </table>
+    <div id="backButton"></div>
   </div>
 
   <div class="container" id="display">
-    
+
     <h1 id="title"></h1>
     <h2 id="winnerHeader"></h2>
     <h3 id="totalVotes"></h3>
@@ -213,29 +209,116 @@ var electionRecords = [{title: "Class President",semester: "Fall", year: 2018, c
 //builds the table
 function buildtable(){
 
+  //hide back button
+  var backButton = document.getElementById("backButton");
+  backButton.innerHTML = '';
+
+  hide();
+
+  var title = document.getElementById("mainTitle");
+  title.innerHTML = "Results From Completed Elections";
+
+  var subtitle = document.getElementById("mainSubtitle");
+  subtitle.innerHTML = "This is a list of all past elections.";
+
   //get the table
   table = document.getElementById("electionTable")
+  table.innerHTML = "<tr><th>Semester</th><th>Year</th><th></th></tr>";
 
+  var lastYear = "";
+  var lastSemester ="";
+  var rows = 0;
   //for all the entries in the database
-  for(i = 0; i < electionRecords.length; i++) {
+  for(var i = 0; i < electionRecords.length; i++) {
     // Create an empty <tr> element and add it to the ith position of the table:
-    var row = table.insertRow(i+1);
+
+
+
 
     // get currentElection object from list/array of students
     var currentElection = electionRecords[i];
 
-    // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
+    if((lastYear!=currentElection.year) || (lastSemester != currentElection.semester)){
 
-    var temp = '<button type="button" class="btn btn-primary" onclick=loadElection(' + i + ')>View Details</button>';
-    cell1.innerHTML = currentElection.title;
-    cell2.innerHTML = currentElection.semester;
-    cell3.innerHTML = currentElection.year;
-    cell4.innerHTML = temp;
+      var row = table.insertRow(rows+1);
+      rows++;
+      // Insert new cells (<td> elements) at the 0-3rd positions of the "new" <tr> element:
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+
+      //create button to change table to show elections from selected semester
+      var temp = '<button type="button" class="btn btn-primary" onclick=getElections(' + i + ')>View Elections</button>';
+      cell1.innerHTML = currentElection.semester;
+      cell2.innerHTML = currentElection.year;
+      cell3.innerHTML = temp;
+
+      lastYear = currentElection.year;
+      lastSemester = currentElection.semester;
+    }
   }
+}
+
+//function to reset the to show elections for the selected year
+function getElections(i){
+
+  //figure out election election was clicked on
+  var calledElection = electionRecords[i];
+
+  //alter the title
+  var title = document.getElementById("mainTitle");
+  title.innerHTML = "Elections for " + calledElection.semester + ", " + calledElection.year;
+
+  //alter the subtitle
+  var subtitle = document.getElementById("mainSubtitle");
+  subtitle.innerHTML = "";
+
+  //change the table structure
+  table = document.getElementById("electionTable");
+  table.innerHTML = "<tr><th>Title</th><th></th></tr>"
+
+  //count the number of rows
+  var rows = 0;
+
+  //comb through all the elections to find the right one
+  for(var i = 0; i < electionRecords.length; i++){
+
+    currentElection = electionRecords[i];
+
+    //if the year and semester match
+    if((currentElection.year == calledElection.year) && (currentElection.semester == calledElection.semester)){
+
+      //insert a row
+      var row = table.insertRow(rows+1);
+
+      //increment the rows
+      rows++;
+
+      //insert two cells, one for the title, and the other for the button
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+
+      //call onLoad with the correct election
+      var temp = '<button type="button" class="btn btn-primary" onclick=loadElection(' + i + ')>View Details</button>';
+
+      //inser tthe cells
+      cell1.innerHTML = currentElection.title;
+      cell2.innerHTML = temp;
+
+
+
+    }
+
+
+  }
+
+  //put in a back button
+  var backButton = document.getElementById("backButton");
+  backButton.innerHTML = '<button type="button" class="btn btn-primary" onclick=buildtable()>Go Back</button>'
+
+
+
+
 }
 
 //loads the selected election
@@ -264,7 +347,7 @@ function loadElection(i){
   voteHeader = document.getElementById("totalVotes");
   voteHeader.innerHTML = "Total votes: " + totalVotes;
 
-  
+
   //setup the table
   table1 = document.getElementById("resultTable");
   table1.innerHTML = "<tr><th>Candidate</th><th>Votes</th><th>Percentage of Total Vote</th></tr>";

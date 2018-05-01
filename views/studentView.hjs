@@ -4,6 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <style>
 body {
@@ -99,6 +100,101 @@ body {
     display: block;
 }
 
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd}
 
@@ -108,13 +204,19 @@ body {
 </style>
 </head>
 
-<body>
 
+
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+
+<body onload=buildtable()>
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/studentView">Home</a>
-  <a href="/candidateView">Candidate Bio</a>
-  <button class="dropdown-btn">Student Government 
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="/studentView">Home</a>
+<button class="dropdown-btn">Student Government
     <i class="material-icons">arrow_drop_down</i>
   </button>
   <div class="dropdown-container" style="display: none">
@@ -134,18 +236,15 @@ body {
       <a href="#">Queen</a>
   </div>
 </div>
-  <!-- 
-  <a href="/createBallot">Create a Ballot</a>
-  <a href="/viewBallot">View Ballots</a>
-  <a href="/results">View Results</a>
--->
-</div>
 
-<div class="dropdown">
-  
-  <span><button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
-    <i class="material-icons">&#xe7fd;</i>
-  </button> </span>
+
+
+
+  <div id="iconDropDown" class="dropdown">
+    <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
+      <i class="material-icons">&#xe7fd;</i>
+    </button>
+
 
   <div id="myDropdown" class="dropdown-content">
     <a href="/">Admin View</a>
@@ -158,14 +257,14 @@ body {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <h2 style="text-align:center;">Welcome to the Student Voting Portal</h2>
 
-  <form>
+  <form action="/generalVoting" method="POST">
 
     <table align="center" cellpadding="20">
 
       <tr>
           <td align="left">What grade are you currently in?</td>
           <td align="justify">
-            
+
             <SELECT id="voterClass" NAME="position" class="div1">
               <OPTION SELECTED> Freshman
               <OPTION> Sophomore
@@ -178,11 +277,31 @@ body {
 
       </table>
 
+      <input type="submit" value="Next">
     </form>
-  
+
 </div>
 
 <script>
+
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+
+
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -217,7 +336,7 @@ window.onclick = function(event) {
 }
 
 </script>
-     
+
 </body>
 
 </html>
