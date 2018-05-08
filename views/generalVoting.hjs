@@ -42,7 +42,7 @@
   </div>
   <div id="iconDropDown"><div class="dropdown">
     <div id="myDropdown" class="dropdown-content">
-      <a href="/studentView">Student View</a>
+      <a href="/">Admin View</a>
       <a href="/logOut">Log Out</a>
     </div></div>
   </div>
@@ -85,26 +85,26 @@
      <h2 style="text-align:center;"> Candidates - President </h2>
       <p style="text-align:center;">please vote for 1 candidate</p>
 
-      <form style="margin:auto; width:20%; text-align: center">
-        <label class="container">Candidate 1
+      <form style="margin:auto; width:20%; text-align: left">
+        <label class="container">Leland Mozee
         <input type="checkbox" checked="checked">
         <span class="checkmark"></span>
       </label>
 
-      <label class="container">Candidate 2
+      <label class="container">Li Rockwell
         <input type="checkbox">
         <span class="checkmark"></span>
       </label>
 
-      <label class="container">Candidate 3
+      <label class="container">Marian Tompkins
         <input type="checkbox">
         <span class="checkmark"></span>
       </label>
-
-      <button type="button" class="btn btn-default">Submit</button>
 
       </form>
 
+      <button type="button" class="btn btn-default" style="text-align: center;">
+        <a href="/studentView">Submit</a></button>
 
   </div>
 

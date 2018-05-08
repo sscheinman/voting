@@ -21,8 +21,8 @@
 	</div>
 	<div id="iconDropDown"><div class="dropdown">
 	  <div id="myDropdown" class="dropdown-content">
-	    <a href="/studentView">Student View</a>
-	    <a href="/logOut">Log Out</a>
+	    <!--<a href="/studentView">Student View</a>
+	    <a href="/logOut">Log Out</a>-->
 	  </div></div>
 	</div>
 

@@ -51,12 +51,6 @@
     </a>
     <a style="float:right"></a>
   </div>
-  <div id="iconDropDown"><div class="dropdown">
-    <div id="myDropdown" class="dropdown-content">
-      <a href="/studentView">Student View</a>
-      <a href="/logOut">Log Out</a>
-    </div></div>
-  </div>
 
 
   <div id="mySidenav" class="sidenav">

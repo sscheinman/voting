@@ -41,12 +41,6 @@
     </a>
     <a style="float:right"></a>
   </div>
-  <div id="iconDropDown"><div class="dropdown">
-    <div id="myDropdown" class="dropdown-content">
-      <a href="/studentView">Student View</a>
-      <a href="/logOut">Log Out</a>
-    </div></div>
-  </div>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -99,8 +93,8 @@
 
       </table>
 
-    <button style = "float: right" onClick="next()">
-      <a href="#"> View Preview &raquo; </a>
+    <button align = "right" onClick="next()">
+      <a href="/electionPreview" > View Preview &raquo; </a>
     </button>
 
 </div>

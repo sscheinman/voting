@@ -33,12 +33,6 @@
       </a>
       <a style="float:right"></a>
     </div>
-    <div id="iconDropDown"><div class="dropdown">
-      <div id="myDropdown" class="dropdown-content">
-
-        <a href="/logOut">Log Out</a>
-      </div></div>
-    </div>
 
     <h1>Register</h1>
 

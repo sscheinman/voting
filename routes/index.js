@@ -81,4 +81,10 @@ function candidateViewFunction (req, res, next){
 	res.render('candidateView');
 }
 
+router.get('/electionPreview', electionPreviewFunction);
+
+function electionPreviewFunction (req, res, next){
+	res.render('electionPreview');
+}
+
 module.exports = router;
