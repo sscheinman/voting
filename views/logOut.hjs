@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+		<link rel="stylesheet" href='/stylesheets/style.css'>
+	</head>
 
-	<h1 style="text-align:center;"> Thank you for using the Wake Forest University Voting System </h1>
 
-</head>
+<body>
+
+	<div class="topnav">
+	  <a></a>
+	  <img src="https://prod.wp.cdn.aws.wfu.edu/sites/73/2017/04/WFU_Univ_H_White.jpg" height=102px width=300px></img>
+	  <a style="float:right">
+
+
+
+
+	  </a>
+
+	  <a style="float:right"></a>
+	</div>
+	<div id="iconDropDown"><div class="dropdown">
+	  <div id="myDropdown" class="dropdown-content">
+	    <a href="/studentView">Student View</a>
+	    <a href="/logOut">Log Out</a>
+	  </div></div>
+	</div>
+
+	<h1 style="text-align:center;" class="main"> Thank you for using the Wake Forest University Voting System </h1>
+
+</body>
 
 </html>

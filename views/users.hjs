@@ -5,8 +5,41 @@
   		rendering this page -->
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+  
   </head>
   <body>
+
+    div class="topnav">
+      <a></a>
+      <img src="https://prod.wp.cdn.aws.wfu.edu/sites/73/2017/04/WFU_Univ_H_White.jpg" height=102px width=300px></img>
+      <a style="float:right">
+
+
+
+
+      </a>
+      <a style="float:right">
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fa fa-caret-down"><img  src="https://www.materialui.co/materialIcons/social/person_white_48x48.png" ></img></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/studentView">Student View</a>
+          <a href="/logOut">Log Out</a>
+        </div>
+      </div>
+      </a>
+      <a style="float:right"></a>
+    </div>
+    <div id="iconDropDown"><div class="dropdown">
+      <div id="myDropdown" class="dropdown-content">
+
+        <a href="/logOut">Log Out</a>
+      </div></div>
+    </div>
+
     <h1>Register</h1>
 
     <form action="/users/record" method="post">
@@ -17,7 +50,7 @@
  	 	<input type="text" name="lastname" value="">
  	 	<br><br>
  	 	<input type="submit" value="Submit">
-	</form> 
+	</form>
 
 	<div>
 	<h1>Current List</h1>

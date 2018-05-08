@@ -8,105 +8,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href='/stylesheets/style.css'>
+
+
+
   <style>
-  body {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
-  }
 
-  .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
 
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
 
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
-
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-
-  }
-
-  /* Dropdown Button */
-  .dropbtn {
-    background-color: #FFFFFF;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-
-  /* Dropdown button on hover & focus */
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #FFFFFF;
-  }
-
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    float: right;
-    position: relative;
-    display: inline-block;
-    background-color: #FFFFFF;
-  }
-
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right: 0;
-    z-index: 1;
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd}
-
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {display:block;}
 
   </style>
 
@@ -114,6 +24,35 @@
 
 
 <body onload=buildtable()>
+<div class="topnav">
+  <a></a>
+  <img src="https://prod.wp.cdn.aws.wfu.edu/sites/73/2017/04/WFU_Univ_H_White.jpg" height=102px width=300px></img>
+  <a style="float:right">
+
+
+
+
+  </a>
+  <a style="float:right">
+  <div class="dropdown">
+    <button class="dropbtn">
+      <i class="fa fa-caret-down"><img  src="https://www.materialui.co/materialIcons/social/person_white_48x48.png" ></img></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/studentView">Student View</a>
+      <a href="/logOut">Log Out</a>
+    </div>
+  </div>
+  </a>
+  <a style="float:right"></a>
+</div>
+<div id="iconDropDown"><div class="dropdown">
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/studentView">Student View</a>
+    <a href="/logOut">Log Out</a>
+  </div></div>
+</div>
+
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -123,40 +62,30 @@
   <a href="/results">View Results</a>
 </div>
 
-<div class="dropdown">
 
-  <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
-    <i class="material-icons">&#xe7fd;</i>
-  </button>
+<div></div>
 
-  <div id="myDropdown" class="dropdown-content">
-    <a href="/studentView">Student View</a>
-    <a href="/logOut">Log Out</a>
-  </div>
-</div>
-
-<div id="main">
+<div id="main" class="main">
 
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
   <!-- <h2>Results From Completed Elections</h2> -->
 
-  <div class="container">
+  <div class="mainContent">
     <h1 style="text-align:center;" id="mainTitle">Results From Completed Elections</h1>
     <p style="text-align:center;" id="mainSubtitle">This is a list of all past elections.</p>
 
-    <table class="table table-hover" id="electionTable">
+    <table class="table" id="electionTable"></table>
 
-    </table>
     <div id="backButton"></div>
   </div>
 
-  <div class="container" id="display">
+  <div class="mainContent" id="display">
 
     <h1 id="title"></h1>
     <h2 id="winnerHeader"></h2>
     <h3 id="totalVotes"></h3>
 
-    <table class="table table-hover" id="resultTable"></table>
+    <table class="table" id="resultTable"></table>
 
     <div  id="offbutton"></div>
 
@@ -169,19 +98,22 @@
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    
+
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
+    document.getElementById("main").style.marginLeft= "30px";
+
+
 }
 
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 
 function dropDownHideShow() {
-    document.getElementById("myDropdown").classList.toggle("show");
+  console.log("here");
+  document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -248,7 +180,7 @@ function buildtable(){
       var cell3 = row.insertCell(2);
 
       //create button to change table to show elections from selected semester
-      var temp = '<button type="button" class="btn btn-primary" onclick=getElections(' + i + ')>View Elections</button>';
+      var temp = '<button style=\"background-color: #A67F31;border-color:#000000  \"class=\"btn btn-primary\" onclick=getElections(' + i + ')>View Elections</button>';
       cell1.innerHTML = currentElection.semester;
       cell2.innerHTML = currentElection.year;
       cell3.innerHTML = temp;
@@ -299,7 +231,7 @@ function getElections(i){
       var cell2 = row.insertCell(1);
 
       //call onLoad with the correct election
-      var temp = '<button type="button" class="btn btn-primary" onclick=loadElection(' + i + ')>View Details</button>';
+      var temp = '<button style=\"background-color: #A67F31;border-color:#000000  \"class=\"btn btn-primary\"  onclick=loadElection(' + i + ')>View Details</button>';
 
       //inser tthe cells
       cell1.innerHTML = currentElection.title;
@@ -314,7 +246,7 @@ function getElections(i){
 
   //put in a back button
   var backButton = document.getElementById("backButton");
-  backButton.innerHTML = '<button type="button" class="btn btn-primary" onclick=buildtable()>Go Back</button>'
+  backButton.innerHTML = '<button style=\"background-color: #A67F31;border-color:#000000  \"class=\"btn btn-primary\"  onclick=buildtable()>Go Back</button>'
 
 
 
@@ -373,7 +305,7 @@ function loadElection(i){
 
   //draw the button
   button1 = document.getElementById("offbutton");
-  button1.innerHTML = "<button class=\"btn btn-primary\"onclick=hide()>Hide</button>";
+  button1.innerHTML = '<button style=\"background-color: #A67F31;border-color:#000000  \"class=\"btn btn-primary\" onclick=hide()>Hide</button>';
 
 }
 
