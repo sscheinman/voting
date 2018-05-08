@@ -106,7 +106,7 @@
 
         <tr>
           <td align="left">When would you like students to end voting?</td>
-          <td align="justify"><input id="voteEnd" onkeypress="return isNumberKey(event)" type="datetime-local" class="div1" name="EndTime" ></td>
+          <td align="justify"><input id="voteEnd" onkeypress="return isNumberKey(event)" type="datetime-local" class="div1" name="EndTime"></td>
         </tr>
 
         <tr>
@@ -126,7 +126,9 @@
 
       </table>
 
-      <input type="submit" value="Next">
+      <input type="submit" value="Next" style="float:right">
+      <input type="reset" value="Cancel" style="float:right">
+
     </form>
 
   </div>

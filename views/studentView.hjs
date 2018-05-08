@@ -11,10 +11,6 @@
 
 </head>
 
-
-
-
-
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
 
@@ -25,28 +21,20 @@
     <img src="https://prod.wp.cdn.aws.wfu.edu/sites/73/2017/04/WFU_Univ_H_White.jpg" height=102px width=300px></img>
     <a style="float:right">
 
-
-
-
     </a>
+
     <a style="float:right">
     <div class="dropdown">
       <button class="dropbtn">
         <i class="fa fa-caret-down"><img  src="https://www.materialui.co/materialIcons/social/person_white_48x48.png" ></img></i>
       </button>
       <div class="dropdown-content">
-        <a href="/studentView">Student View</a>
+        <a href="/">Admin View</a>
         <a href="/logOut">Log Out</a>
       </div>
     </div>
     </a>
     <a style="float:right"></a>
-  </div>
-  <div id="iconDropDown"><div class="dropdown">
-    <div id="myDropdown" class="dropdown-content">
-      <a href="/studentView">Student View</a>
-      <a href="/logOut">Log Out</a>
-    </div></div>
   </div>
 
 
@@ -54,6 +42,7 @@
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <a href="/studentView">Home</a>
+<a href="/candidateView">Candidate View</a>
 <button class="dropdown-btn">Student Government
     <i class="material-icons">arrow_drop_down</i>
   </button>
@@ -105,7 +94,7 @@
 
       </table>
 
-      <input type="submit" value="Next">
+      <input type="submit" value="Next" style="float:right">
     </form>
 
 </div>

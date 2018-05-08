@@ -1,6 +1,7 @@
 body {
   font-family: "Lato", sans-serif;
   transition: background-color .5s;
+  background-color: #E7DCBA;
 }
 
 .sidenav {
@@ -48,14 +49,6 @@ body {
 
 }
 
-
-body{
-
-  background-color: #E7DCBA;
-
-
-}
-
 .main{
 
   background-color: white;
@@ -69,8 +62,6 @@ body{
   margin-right: 30px;
 
 }
-
-
 
 
 .mainTitle{
@@ -109,6 +100,7 @@ font-family: serif;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  display: inline-block;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
