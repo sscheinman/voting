@@ -20,112 +20,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href='/stylesheets/style.css'>
 
-  <style>
-  body {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
-  }
-
-  .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
-
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
-
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-
-  /* Dropdown Button */
-  .dropbtn {
-    background-color: #FFFFFF;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-
-  /* Dropdown button on hover & focus */
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #FFFFFF;
-  }
-
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    float: right;
-    position: relative;
-    display: inline-block;
-    background-color: #FFFFFF;
-  }
-
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right: 0;
-    z-index: 1;
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd}
-
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-
-  .show {display:block;}
-
-  .div1{
-    width: 200px;
-  }
-
-  </style>
 
 </head>
 
@@ -133,6 +29,35 @@
 
 
 <body>
+  <div class="topnav">
+    <a></a>
+    <img src="https://prod.wp.cdn.aws.wfu.edu/sites/73/2017/04/WFU_Univ_H_White.jpg" height=102px width=300px></img>
+    <a style="float:right">
+
+
+
+
+    </a>
+    <a style="float:right">
+    <div class="dropdown">
+      <button class="dropbtn">
+        <i class="fa fa-caret-down"><img  src="https://www.materialui.co/materialIcons/social/person_white_48x48.png" ></img></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/studentView">Student View</a>
+        <a href="/logOut">Log Out</a>
+      </div>
+    </div>
+    </a>
+    <a style="float:right"></a>
+  </div>
+  <div id="iconDropDown"><div class="dropdown">
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/studentView">Student View</a>
+      <a href="/logOut">Log Out</a>
+    </div></div>
+  </div>
+
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/">Home</a>
@@ -141,18 +66,9 @@
     <a href="/results">View Results</a>
   </div>
 
-  <div class="dropdown">
-    <button style="color:black" onclick="dropDownHideShow()" class="dropbtn">
-      <i class="material-icons">&#xe7fd;</i>
-    </button>
 
-    <div id="myDropdown" class="dropdown-content">
-      <a href="/studentView">Student View</a>
-      <a href="/logOut">Log Out</a>
-    </div>
-  </div>
 
-  <div id="main">
+  <div id="main"class="main">
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </span>
     <h2 style="text-align:center;"> Student Government - Election </h2>
 
@@ -217,18 +133,19 @@
 
   <script>
 
-    function openNav() {
+  function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
       document.getElementById("main").style.marginLeft = "250px";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    }
 
-    function closeNav() {
+
+  }
+
+  function closeNav() {
       document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
-      document.body.style.backgroundColor = "white";
-    }
+      document.getElementById("main").style.marginLeft= "30px";
 
+
+  }
     /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 
     function dropDownHideShow() {
